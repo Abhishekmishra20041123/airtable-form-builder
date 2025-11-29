@@ -8,10 +8,15 @@ if (isLocal) {
 }
 
 // Debug: Log critical environment variables
+console.log('='.repeat(60));
+console.log('🚀 AIRTABLE FORM BUILDER SERVER STARTING');
+console.log('='.repeat(60));
 console.log('Environment Check:');
-console.log('- AIRTABLE_REDIRECT_URI:', process.env.AIRTABLE_REDIRECT_URI || 'NOT SET');
-console.log('- FRONTEND_URL:', process.env.FRONTEND_URL || 'NOT SET');
-console.log('- RENDER:', process.env.RENDER || 'NOT SET');
+console.log('- AIRTABLE_REDIRECT_URI:', process.env.AIRTABLE_REDIRECT_URI || '❌ NOT SET');
+console.log('- FRONTEND_URL:', process.env.FRONTEND_URL || '❌ NOT SET');
+console.log('- RENDER:', process.env.RENDER || '❌ NOT SET');
+console.log('- PORT:', process.env.PORT || '❌ NOT SET');
+console.log('='.repeat(60));
 
 const express = require('express');
 const mongoose = require('mongoose');
