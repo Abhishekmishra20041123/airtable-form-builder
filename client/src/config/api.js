@@ -1,6 +1,10 @@
 // API Configuration v2.0 - PRODUCTION
 // Updated: Using production Render backend
-const API_BASE_URL = import.meta.env.VITE_API_URL || 'http://localhost:5000';
+// WORKAROUND: Hardcoding production URL since Vercel env vars aren't being picked up
+const API_BASE_URL = import.meta.env.VITE_API_URL ||
+    (window.location.hostname === 'localhost'
+        ? 'http://localhost:5000'
+        : 'https://airtable-assignment.onrender.com');
 
 // Debug: Log the API URL being used
 console.log('='.repeat(60));
