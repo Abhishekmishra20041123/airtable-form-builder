@@ -1,5 +1,6 @@
-// Only load .env in development
-if (process.env.NODE_ENV !== 'production') {
+// Load dotenv only if .env file exists (for local development)
+// In production (Render), environment variables are injected directly
+if (require('fs').existsSync('.env')) {
     require('dotenv').config();
 }
 const express = require('express');
