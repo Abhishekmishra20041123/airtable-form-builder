@@ -1,8 +1,18 @@
-// Load dotenv only if .env file exists (for local development)
-// In production (Render), environment variables are injected directly
-if (require('fs').existsSync('.env')) {
+// Only load dotenv in local development (not on Render)
+const isLocal = !process.env.RENDER && !process.env.PORT;
+if (isLocal) {
     require('dotenv').config();
+    console.log('🔧 Running in LOCAL mode - dotenv loaded');
+} else {
+    console.log('🚀 Running in PRODUCTION mode - using Render env vars');
 }
+
+// Debug: Log critical environment variables
+console.log('Environment Check:');
+console.log('- AIRTABLE_REDIRECT_URI:', process.env.AIRTABLE_REDIRECT_URI || 'NOT SET');
+console.log('- FRONTEND_URL:', process.env.FRONTEND_URL || 'NOT SET');
+console.log('- RENDER:', process.env.RENDER || 'NOT SET');
+
 const express = require('express');
 const mongoose = require('mongoose');
 const cors = require('cors');
