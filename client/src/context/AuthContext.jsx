@@ -1,5 +1,6 @@
 import { createContext, useContext, useState, useEffect } from 'react';
 import axios from 'axios';
+import { API_ENDPOINTS } from '../config/api';
 
 const AuthContext = createContext();
 
@@ -15,7 +16,7 @@ export const AuthProvider = ({ children }) => {
 
     const checkAuth = async () => {
         try {
-            const res = await axios.get('http://localhost:5000/auth/me', { withCredentials: true });
+            const res = await axios.get(API_ENDPOINTS.ME, { withCredentials: true });
             setUser(res.data);
         } catch (err) {
             setUser(null);
@@ -25,12 +26,12 @@ export const AuthProvider = ({ children }) => {
     };
 
     const login = () => {
-        window.location.href = 'http://localhost:5000/auth/airtable';
+        window.location.href = API_ENDPOINTS.LOGIN;
     };
 
     const logout = async () => {
         try {
-            await axios.post('http://localhost:5000/auth/logout', {}, { withCredentials: true });
+            await axios.post(API_ENDPOINTS.LOGOUT, {}, { withCredentials: true });
             setUser(null);
         } catch (err) {
             console.error(err);
