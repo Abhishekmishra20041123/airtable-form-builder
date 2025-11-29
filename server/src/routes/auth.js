@@ -15,6 +15,9 @@ function generatePKCE() {
 }
 
 router.get('/airtable', (req, res) => {
+    console.log('DEBUG: AIRTABLE_REDIRECT_URI:', process.env.AIRTABLE_REDIRECT_URI);
+    console.log('DEBUG: NODE_ENV:', process.env.NODE_ENV);
+
     const state = crypto.randomBytes(16).toString('hex');
     const { codeVerifier, codeChallenge } = generatePKCE();
 
