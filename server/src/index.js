@@ -1,5 +1,7 @@
-require('dotenv').config();
-console.log('MONGO_URI:', process.env.MONGO_URI);
+// Only load .env in development
+if (process.env.NODE_ENV !== 'production') {
+    require('dotenv').config();
+}
 const express = require('express');
 const mongoose = require('mongoose');
 const cors = require('cors');
