@@ -95,7 +95,8 @@ router.get('/airtable/callback', async (req, res) => {
         // Set session
         req.session.userId = user._id;
 
-        res.redirect('http://localhost:5173/dashboard');
+        const frontendUrl = process.env.FRONTEND_URL || 'http://localhost:5173';
+        res.redirect(`${frontendUrl}/dashboard`);
     } catch (err) {
         console.error('OAuth Error:', err.response?.data || err.message);
         res.status(500).send('Authentication failed: ' + (err.response?.data?.error || err.message));

@@ -7,6 +7,9 @@ const cookieSession = require('cookie-session');
 
 const app = express();
 
+// Trust proxy (required for Render/Heroku/etc)
+app.set('trust proxy', 1);
+
 // Middleware
 app.use(cors({
     origin: 'http://localhost:5173', // Frontend URL
